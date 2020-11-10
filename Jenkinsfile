@@ -16,7 +16,8 @@ pipeline {
                 script {
                     app = docker.build("igorsytnyk/train-schedule")
                     app.inside {
-                        sh 'echo $(curl localhost:8080)'
+                        sh 'echo $(pwd)'
+                        sh 'echo "FINISHING BUILDING STEP"'
                     }
                 }
             }
