@@ -20,9 +20,6 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            when {
-                branch 'master'
-            }
             steps {
                 script {
                     docker.withRegistry('https://267245852725.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:awsecr') {
