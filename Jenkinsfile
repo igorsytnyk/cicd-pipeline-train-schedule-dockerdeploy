@@ -14,7 +14,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("warehouse/train-schedule")
+                    app = docker.build("train-schedule")
                     app.inside {
                         sh 'echo $(pwd)'
                         sh 'echo "FINISHING BUILDING STEP"'
