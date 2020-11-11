@@ -14,7 +14,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("igorsytnyk/train-schedule")
+                    app = docker.build("warehouse/train-schedule")
                     app.inside {
                         sh 'echo $(pwd)'
                         sh 'echo "FINISHING BUILDING STEP"'
@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://267245852725.dkr.ecr.eu-central-1.amazonaws.com/warehouse/', 'ecr:eu-central-1:awsecr') {
+                    docker.withRegistry('https://267245852725.dkr.ecr.eu-central-1.amazonaws.com/warehouse', 'ecr:eu-central-1:awsecr') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
